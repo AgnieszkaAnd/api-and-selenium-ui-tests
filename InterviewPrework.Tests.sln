@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsApi.Tests", "StarWarsApi.Tests\StarWarsApi.Tests.csproj", "{562F0064-7E9D-4A43-B138-C716E5E9B341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMap.UITests", "GoogleMap.UITests\GoogleMap.UITests.csproj", "{09CF9C35-C07D-4ADF-B73A-1712BA808F8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{562F0064-7E9D-4A43-B138-C716E5E9B341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562F0064-7E9D-4A43-B138-C716E5E9B341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{562F0064-7E9D-4A43-B138-C716E5E9B341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{562F0064-7E9D-4A43-B138-C716E5E9B341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09CF9C35-C07D-4ADF-B73A-1712BA808F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09CF9C35-C07D-4ADF-B73A-1712BA808F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09CF9C35-C07D-4ADF-B73A-1712BA808F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09CF9C35-C07D-4ADF-B73A-1712BA808F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CF31A3C-70F6-48B2-838C-0B5A8C27DF10}
+	EndGlobalSection
+EndGlobal
