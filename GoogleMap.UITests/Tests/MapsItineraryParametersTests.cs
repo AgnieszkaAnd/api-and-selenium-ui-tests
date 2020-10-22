@@ -1,41 +1,33 @@
 ﻿using GoogleMap.UITests.PageObjectModels;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit;
+using System.Reflection;
+using NUnit.Framework;
 
-namespace GoogleMap.UITests
+namespace GoogleMap.UITests.Tests
 {
-    public class MapsItineraryParametersTests
+    [TestFixture]
+    public class MapsItineraryParametersTests : TestBase
     {
-        private readonly IWebDriver _driver;
-
-        public MapsItineraryParametersTests(string browserType = "chrome")
-        {
-            switch (browserType)
-            {
-                case "chrome":
-                    _driver = new ChromeDriver();
-                    break;
-                default:
-                    _driver = new ChromeDriver();
-                    break;
-            }
-        }
-
-        [Theory]
-        [Trait("Category", "Distance")]
-        [InlineData("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 3, "Pieszo")]
-        [InlineData("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 3, "Pieszo")]
-        [InlineData("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 3, "Na rowerze")]
-        [InlineData("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 3, "Na rowerze")]
+        [TestCase("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 3, "Pieszo")]
+        [TestCase("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 3, "Pieszo")]
+        [TestCase("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 3, "Na rowerze")]
+        [TestCase("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 3, "Na rowerze")]
         public void VerifyDistance_ReturnsLessThanGiven(
             string startLocation,
             string endLocation,
             int maxDistanceInKilometers,
             string modeOfTransport)
         {
+            extent.CreateTest(
+                $"{MethodBase.GetCurrentMethod().Name}" +
+                $" from {startLocation}" +
+                $" to {endLocation}" +
+                $" mode of transport: {modeOfTransport}" +
+                $" given: {maxDistanceInKilometers}km"
+            );
+
             using (IWebDriver driver = _driver)
             {
                 // Arrange
@@ -58,18 +50,24 @@ namespace GoogleMap.UITests
             }
         }
 
-        [Theory]
-        [Trait("Category", "TravelTime")]
-        [InlineData("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 40, "Pieszo")]
-        [InlineData("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 40, "Pieszo")]
-        [InlineData("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 40, "Na rowerze")]
-        [InlineData("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 40, "Na rowerze")]
+        [TestCase("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 40, "Pieszo")]
+        [TestCase("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 40, "Pieszo")]
+        [TestCase("Plac Defilad 1, Warszawa", "Chłodna 51, Warszawa", 40, "Na rowerze")]
+        [TestCase("Chłodna 51, Warszawa", "Plac Defilad 1, Warszawa", 40, "Na rowerze")]
         public void VerifyTravelTime_ReturnsLessThanGiven(
             string startLocation,
             string endLocation,
             int travelTimeInMinutes,
             string modeOfTransport)
         {
+            extent.CreateTest(
+                $"{MethodBase.GetCurrentMethod().Name}" +
+                $" from {startLocation}" +
+                $" to {endLocation}" +
+                $" mode of transport: {modeOfTransport}" +
+                $" given: {travelTimeInMinutes} minutes"
+            );
+
             using (IWebDriver driver = _driver)
             {
                 // Arrange
