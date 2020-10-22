@@ -9,3 +9,4 @@ Environment settings:
 - UI tests:
     - xUnit framework 2.4.1
     - tests support Chrome Browser v.86 - which has around 66% market share taking into account all hardware platforms (~70% desktop and ~65% mobile) according to https://gs.statcounter.com/browser-market-share data from September 2020
+	- location of a results log: /api-and-selenium-ui-tests/GoogleMap.UITests/bin/Debug/ExtentReports.html
