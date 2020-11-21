@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
 using RestSharp.Serialization.Json;
@@ -21,18 +22,18 @@ namespace StarWarsApi.Tests
 
         [DataRow("Luke Skywalker", "Tatooine")]
         [TestMethod]
-        public void VerifyIfPersonHomeWorldName_ReturnsExpectedPlanetName(string personName, string expectedPlanetName)
+        public async Task VerifyIfPersonHomeWorldName_ReturnsExpectedPlanetName(string personName, string expectedPlanetName)
         {
-            Person person = GetPersonByName(_client, personName);
-            Planet planet = GetPersonHomePlanet(_client, person);
+            Person person = await GetPersonByName(_client, personName);
+            Planet planet = await GetPersonHomePlanet(_client, person);
 
             Assert.AreEqual(expectedPlanetName, planet.Name);
         }
 
-        private Person GetPersonByName(RestClient client, string personName)
+        private async Task<Person> GetPersonByName(RestClient client, string personName)
         {
             RestRequest request = new RestRequest("people/?search=" + personName, Method.GET);
-            IRestResponse response = _client.Execute(request);
+            IRestResponse response = await _client.ExecuteAsync(request);
             QueryResult<Person> result = new JsonDeserializer().Deserialize<QueryResult<Person>>(response);
             
             if(result.Results.Count == 1)
@@ -45,10 +46,10 @@ namespace StarWarsApi.Tests
             }
         }
 
-        private Planet GetPersonHomePlanet(RestClient client, Person person)
+        private async Task<Planet> GetPersonHomePlanet(RestClient client, Person person)
         {
             RestRequest request = new RestRequest(person.HomeWorld, Method.GET);
-            IRestResponse response = _client.Execute(request);
+            IRestResponse response = await _client.ExecuteAsync(request);
             
             Planet planet = new JsonDeserializer().Deserialize<Planet>(response);
 
